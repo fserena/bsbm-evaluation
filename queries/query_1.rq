@@ -1,0 +1,4 @@
+SELECT *
+WHERE
+{  ?s <http://200.1.19.244:8082/WODSim/id/http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/vocabulary/reviewFor> <http://200.1.19.244:8082/WODSim/id/http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromProducer2/Product77> }
+

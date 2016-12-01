@@ -1,0 +1,17 @@
+PREFIX  dc:   <http://purl.org/dc/elements/1.1/>
+PREFIX  rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX  rev:  <http://purl.org/stuff/rev#>
+PREFIX  foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX  bsbm: <http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/vocabulary/>
+PREFIX  bsbm-export: <http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/vocabulary/export/>
+
+# This is a new query (it is more suitable for experiments than the previous SQ6 that I used in the WWW 2014 paper)
+
+SELECT * WHERE {
+	?product bsbm:producer  <http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromProducer1/Producer1> .
+#	         rdfs:label     "openhanded babus" .
+	?review bsbm:reviewFor ?product ;
+	        bsbm:reviewer   ?reviewer .
+	?reviewer  foaf:name  ?name .
+}
+

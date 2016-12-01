@@ -1,0 +1,297 @@
+@prefix : <http://agora.org/absbm#> .
+@prefix dc: <http://purl.org/dc/terms/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix absbm: <http://agora.org/absbm#> .
+@prefix example: <http://www.example.com/> .
+@prefix rev:  <http://purl.org/stuff/rev#> .
+@prefix bsbm: <http://200.1.19.244:8082/WODSim/id/http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/vocabulary/> .
+@prefix nrl: <http://www.semanticdesktop.org/ontologies/2007/08/15/nrl#> .
+@prefix nao: <http://www.semanticdesktop.org/ontologies/2007/08/15/nao#> .
+@prefix bsbm-export: <http://200.1.19.244:8082/WODSim/id/http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/vocabulary/export/> .
+@base <http://agora.org/absbm> .
+
+<http://agora.org/absbm> rdf:type owl:Ontology .
+
+xsd:date rdf:type rdfs:Datatype .
+bsbm:hasProduct rdf:type owl:ObjectProperty .
+
+bsbm:producer a owl:ObjectProperty;
+        nrl:maxCardinality 1;
+        rdfs:domain bsbm:Product;
+        rdfs:range bsbm:Producer .
+
+bsbm:reviewFor a owl:ObjectProperty;
+        nrl:maxCardinality 1;
+        rdfs:domain bsbm:Review;
+        rdfs:range bsbm:Product .
+
+:Service rdf:type owl:Class ;
+         rdfs:subClassOf [ rdf:type owl:Restriction ;
+                           owl:onProperty :hasProduct ;
+                           owl:someValuesFrom bsbm:Product
+                         ] .
+
+bsbm:Product rdf:type owl:Class ;
+             rdfs:subClassOf [ rdf:type owl:Restriction ;
+                                   owl:onProperty bsbm:producer ;
+                                   owl:someValuesFrom bsbm:Producer
+                                 ],
+                         [ rdf:type owl:Restriction ;
+                               owl:onProperty bsbm:productFeature ;
+                               owl:someValuesFrom bsbm:ProductFeature
+                             ] .
+
+bsbm:Review rdf:type owl:Class ;
+             rdfs:subClassOf [ rdf:type owl:Restriction ;
+                                   owl:onProperty bsbm:reviewFor ;
+                                   owl:someValuesFrom bsbm:Product
+                                 ],
+                          [ rdf:type owl:Restriction ;
+                                   owl:onProperty bsbm:reviewer ;
+                                   owl:someValuesFrom foaf:Person
+                                 ]
+                                  .
+
+bsbm:Offer rdf:type owl:Class ;
+             rdfs:subClassOf [ rdf:type owl:Restriction ;
+                                   owl:onProperty bsbm:producer ;
+                                   owl:someValuesFrom bsbm:Offer
+                                 ] .
+
+bsbm:Product a owl:Class;
+        rdfs:label "Product" .
+
+bsbm:ProductType a owl:Class;
+        rdfs:label "ProductType" .
+
+
+bsbm:Locatable a owl:Class;
+        rdfs:label "Locatable" .
+
+bsbm:Producer a owl:Class;
+        rdfs:label "Producer" ;
+  rdfs:subClassOf bsbm:Locatable .
+
+bsbm:Vendor a owl:Class;
+        rdfs:label "Vendor" ;
+  rdfs:subClassOf bsbm:Locatable .
+
+bsbm:Person a owl:Class;
+        rdfs:label "Person" ;
+        foaf:name xsd:String ;
+  rdfs:subClassOf bsbm:Locatable .
+
+
+
+#------------------------------------------------------------------------------
+#Product properties
+
+
+bsbm:productPropertyTextual1 a owl:ObjectProperty;
+        nrl:maxCardinality 1;
+        rdfs:domain bsbm:Product;
+        rdfs:range xsd:string .
+
+bsbm:productPropertyTextual2 a owl:ObjectProperty;
+        nrl:maxCardinality 1;
+        rdfs:domain bsbm:Product;
+        rdfs:range xsd:string .
+
+bsbm:productPropertyTextual3 a owl:ObjectProperty;
+        nrl:maxCardinality 1;
+        rdfs:domain bsbm:Product;
+        rdfs:range xsd:string .
+
+bsbm:productPropertyTextual4 a owl:ObjectProperty;
+        nrl:maxCardinality 1;
+        rdfs:domain bsbm:Product;
+        rdfs:range xsd:string .
+
+bsbm:productPropertyTextual5 a owl:ObjectProperty;
+        nrl:maxCardinality 1;
+        rdfs:domain bsbm:Product;
+        rdfs:range xsd:string .
+
+bsbm:productPropertyTextual6 a owl:ObjectProperty;
+        nrl:maxCardinality 1;
+        rdfs:domain bsbm:Product;
+        rdfs:range xsd:string .
+
+bsbm:productPropertyTextual7 a owl:ObjectProperty;
+        nrl:maxCardinality 1;
+        rdfs:domain bsbm:Product;
+        rdfs:range xsd:string .
+
+bsbm:productPropertyTextual8 a owl:ObjectProperty;
+        nrl:maxCardinality 1;
+        rdfs:domain bsbm:Product;
+        rdfs:range xsd:string .
+
+bsbm:productPropertyTextual9 a owl:ObjectProperty;
+        nrl:maxCardinality 1;
+        rdfs:domain bsbm:Product;
+        rdfs:range xsd:string .
+
+bsbm:productPropertyNumeric1 a owl:ObjectProperty;
+        nrl:maxCardinality 1;
+        rdfs:domain bsbm:Product;
+        rdfs:range xsd:integer .
+
+bsbm:productPropertyNumeric2 a owl:ObjectProperty;
+        nrl:maxCardinality 1;
+        rdfs:domain bsbm:Product;
+        rdfs:range xsd:integer .
+
+bsbm:productPropertyNumeric3 a owl:ObjectProperty;
+        nrl:maxCardinality 1;
+        rdfs:domain bsbm:Product;
+        rdfs:range xsd:integer .
+
+bsbm:productPropertyNumeric4 a owl:ObjectProperty;
+        nrl:maxCardinality 1;
+        rdfs:domain bsbm:Product;
+        rdfs:range xsd:integer .
+
+bsbm:productPropertyNumeric5 a owl:ObjectProperty;
+        nrl:maxCardinality 1;
+        rdfs:domain bsbm:Product;
+        rdfs:range xsd:integer .
+
+bsbm:productPropertyNumeric6 a owl:ObjectProperty;
+        nrl:maxCardinality 1;
+        rdfs:domain bsbm:Product;
+        rdfs:range xsd:integer .
+
+bsbm:productPropertyNumeric7 a owl:ObjectProperty;
+        nrl:maxCardinality 1;
+        rdfs:domain bsbm:Product;
+        rdfs:range xsd:integer .
+
+bsbm:productPropertyNumeric8 a owl:ObjectProperty;
+        nrl:maxCardinality 1;
+        rdfs:domain bsbm:Product;
+        rdfs:range xsd:integer .
+
+bsbm:productPropertyNumeric9 a owl:ObjectProperty;
+        nrl:maxCardinality 1;
+        rdfs:domain bsbm:Product;
+        rdfs:range xsd:integer .
+
+
+
+#------------------------------------------------------------------------------
+#Locatable properties
+
+#TODO The range is actually a URI. Is there a simple type for this restriction?
+bsbm:country a owl:ObjectProperty;
+        nrl:maxCardinality 1;
+        rdfs:domain bsbm:Locatable;
+        rdfs:range xsd:string .
+
+#------------------------------------------------------------------------------
+#Offer properties
+
+bsbm:product a owl:ObjectProperty;
+        nrl:maxCardinality 1;
+        rdfs:domain bsbm:Offer;
+        rdfs:range bsbm:Product .
+
+bsbm:vendor a owl:ObjectProperty;
+        nrl:maxCardinality 1;
+        rdfs:domain bsbm:Offer;
+        rdfs:range bsbm:Vendor .
+
+#TODO The range is actually a currency. Is there a specific type for this?
+bsbm:price a owl:ObjectProperty;
+        nrl:maxCardinality 1;
+        rdfs:domain bsbm:Offer;
+        rdfs:range xsd:double .
+
+bsbm:validFrom a owl:ObjectProperty;
+        nrl:maxCardinality 1;
+        rdfs:domain bsbm:Offer;
+        rdfs:range xsd:date .
+
+bsbm:validTo a owl:ObjectProperty;
+        nrl:maxCardinality 1;
+        rdfs:domain bsbm:Offer;
+        rdfs:range xsd:date .
+
+bsbm:deliveryDays a owl:ObjectProperty;
+        nrl:maxCardinality 1;
+        rdfs:domain bsbm:Offer;
+        rdfs:range xsd:integer .
+
+#TODO The range is actually an URL. Is there a simple type for this restriction?
+bsbm:offerWebpage a owl:ObjectProperty;
+        nrl:maxCardinality 1;
+        rdfs:domain bsbm:Offer;
+        rdfs:range xsd:string .
+
+#------------------------------------------------------------------------------
+#Review properties
+
+
+bsbm:reviewDate a owl:ObjectProperty;
+        nrl:maxCardinality 1;
+        rdfs:domain bsbm:Review;
+        rdfs:range xsd:date .
+
+bsbm:reviewer a owl:ObjectProperty;
+        rdfs:domain bsbm:Review;
+        rdfs:range bsbm:Person .
+
+bsbm:rating1 a owl:ObjectProperty;
+        nrl:maxCardinality 1;
+        rdfs:domain bsbm:Review;
+        rdfs:range xsd:integer .
+
+bsbm:rating2 a owl:ObjectProperty;
+        nrl:maxCardinality 1;
+        rdfs:domain bsbm:Review;
+        rdfs:range xsd:integer .
+
+bsbm:rating3 a owl:ObjectProperty;
+        nrl:maxCardinality 1;
+        rdfs:domain bsbm:Review;
+        rdfs:range xsd:integer .
+
+bsbm:rating4 a owl:ObjectProperty;
+        nrl:maxCardinality 1;
+        rdfs:domain bsbm:Review;
+        rdfs:range xsd:integer .
+
+bsbm:rating5 a owl:ObjectProperty;
+        nrl:maxCardinality 1;
+        rdfs:domain bsbm:Review;
+        rdfs:range xsd:integer .
+
+bsbm:rating6 a owl:ObjectProperty;
+        nrl:maxCardinality 1;
+        rdfs:domain bsbm:Review;
+        rdfs:range xsd:integer .
+
+bsbm:rating7 a owl:ObjectProperty;
+        nrl:maxCardinality 1;
+        rdfs:domain bsbm:Review;
+        rdfs:range xsd:integer .
+
+bsbm:rating8 a owl:ObjectProperty;
+        nrl:maxCardinality 1;
+        rdfs:domain bsbm:Review;
+        rdfs:range xsd:integer .
+
+bsbm:rating9 a owl:ObjectProperty;
+        nrl:maxCardinality 1;
+        rdfs:domain bsbm:Review;
+        rdfs:range xsd:integer .
+
+bsbm:rating10 a owl:ObjectProperty;
+        nrl:maxCardinality 1;
+        rdfs:domain bsbm:Review;
+        rdfs:range xsd:integer .
